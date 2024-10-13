@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -20,8 +20,18 @@ ChartJS.register(
   Legend
 );
 
-const GraphBlock = ({ content }) => {
+const GraphBlock = ({ content, onContentChange }) => {
   const [data, setData] = useState(content.data || [10, 20, 30, 40, 50]);
+
+  useEffect(() => {
+    if (content.data) {
+      setData(content.data);
+    }
+  }, [content.data]);
+
+  useEffect(() => {
+    onContentChange({ data });
+  }, [data]);
 
   const chartData = {
     labels: ["A", "B", "C", "D", "E"],
@@ -67,6 +77,7 @@ GraphBlock.propTypes = {
   content: PropTypes.shape({
     data: PropTypes.arrayOf(PropTypes.number),
   }),
+  onContentChange: PropTypes.func.isRequired,
 };
 
 export default GraphBlock;
