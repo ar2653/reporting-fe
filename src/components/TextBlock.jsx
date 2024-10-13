@@ -10,6 +10,7 @@ const TextBlock = ({ content }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Enter your text here"
+        className='textarea textarea-success'
       />
     </div>
   );
