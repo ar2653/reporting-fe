@@ -1,11 +1,13 @@
 import './App.css'
 import Navbar from './components/Navbar'
+import ReportBuilder from './components/ReportBuilder'
+
 function App() {
 
   return (
     <>
       <Navbar />
-      <p>Hello World</p>
+      <ReportBuilder />
     </>
   )
 }
