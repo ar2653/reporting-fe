@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextBlock from "./TextBlock";
 import TableBlock from "./TableBlock";
-
+import ImageBlock from "./ImageBlock";
 const ReportBuilder = () => {
   const [elements, setElements] = useState([]);
 
@@ -33,6 +33,8 @@ const ReportBuilder = () => {
     switch (element.type) {
       case "text":
         return <TextBlock {...props} />;
+      case "image":
+        return <ImageBlock className="m-4 p-2" {...props} />;
       case "table":
         return <TableBlock className="m-4 p-2" {...props} />;
       default:
@@ -55,6 +57,12 @@ const ReportBuilder = () => {
           onClick={() => addElement("table")}
         >
           Add Table
+        </button>
+        <button
+          className="btn btn-neutral p-2 m-3"
+          onClick={() => addElement("image")}
+        >
+          Add Image
         </button>
       </div>
       <div className="report-container min-w-96 m-3 p-2">
